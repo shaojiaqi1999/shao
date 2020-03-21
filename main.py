@@ -2,18 +2,22 @@ import csv
 
 f = open('C:/Users/shaoj/PycharmProjects/untitled/text.csv', 'w')
 
+# Печатать число Kaprekara в экселе
 def PPRRIINNTT(num: list,size: int):
     for i in range(0,size,1):
         temp = num[i]
         f.write("%d" % temp)
     f.write(",")
 
+# Переводить в десятичную систему из заданной системы.
 def trans_to_10(num: list,n: int,size: int):
     sum = 0
     for i in range (0,size,1):
         sum = sum + num[size-i-1] * n**i
     return sum
 
+
+# Вычитание в заданной системе
 def minuss(num1, num2, n, size):
     num3 = [0]*size
     for i in range(size-1,-1,-1):
@@ -24,6 +28,8 @@ def minuss(num1, num2, n, size):
             num3[i] = num1[i]- num2[i]
     return num3
 
+
+# Сложение в заданной системе
 def plus_add(num1,num2,n,size):
     num3 = [0]* size
     for i in range(size-1,-1,-1):
@@ -34,6 +40,8 @@ def plus_add(num1,num2,n,size):
             num3[i] = num3[i] + num1[i] + num2[i]
     return num3
 
+# вход : Число в заданной системе в виде массиве
+# выход: Полученное число после операции Kaprekara
 def s_o_s_f(num,n,size):
     num1 = [0]*size
     num2 = [0]*size
@@ -46,7 +54,7 @@ def s_o_s_f(num,n,size):
     num3 = minuss(num1, num2, n, size)
     return num3
 
-
+# Найти число Kaprekara в данной системе
 def Kaprekara(n, size):
     arr = [0]*size
     h = [0]*size
@@ -57,7 +65,7 @@ def Kaprekara(n, size):
         if(arr1 == arr):
             PPRRIINNTT(arr, size)
 
-
+# Найти максимальную глубину в данной системе
 def Depth(n: int,size: int):
     arr = [0]*size
     h = [0]*size
@@ -81,9 +89,9 @@ def Depth(n: int,size: int):
             k2 = k1
     return k2
 
+
 def mmaaiinn_main():
     f.write('"Base";"Length";"Depth";"Kaprekara"\n')
-
     for n in range(2,11,1):
         for size in range(2,7,1):
             f.write('"%d";"%d";'%(n,size))
